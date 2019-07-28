@@ -41,4 +41,4 @@ var isMatch = function(s, p) {
     return ''
 };
 
-console.log(isMatch('aa','aa'))
+console.log(isMatch('adceb','*a*b'))
