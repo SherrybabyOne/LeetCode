@@ -1,7 +1,2 @@
-const a = [2,2,2,2];
-const b = 2;
-console.log(
-    a.every(elm => {
-        return !(elm%b !== 0)
-    })
-)
+const a = '012';
+console.log(a[0],a[1])
