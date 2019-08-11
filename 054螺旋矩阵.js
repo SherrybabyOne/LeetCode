@@ -4,14 +4,17 @@
  */
 var spiralOrder = function(matrix) {
     let map = (arr, r = []) => {
-        if(arr.length === 0) return [];
+        let len = arr.length;
+        if(len === 0) return [];
         let n = arr[0].length;
         if(n === 0) return r
-        if(n === 1) return r.concat(arr.map(item => item[0]))
-        for(let i = 0; i<arr.length; i++) {
+        if(n === 1) {
+            return r.concat(arr.map(item => item[0]))
+        }
+        for(let i = 0; i<len; i++) {
             if(i === 0) {
                 r = r.concat(arr[i]);
-            } else if (i === arr.length-1) {
+            } else if (i === len-1) {
                 r = r.concat(arr[i].reverse());
             } else {
                 r.push(arr[i].pop())
