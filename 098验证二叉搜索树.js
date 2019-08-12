@@ -12,7 +12,7 @@
 var isValidBST = function(root,lower = null,upper = null) {
     if(!root) return true
     let val = root.val;
-    if(lower !== null && val <= lowser) return false;
+    if(lower !== null && val <= lower) return false;
     if(upper !== null && val >= upper) return false;
-    return isValidBST(root.left,lowser,val) && isValidBST(root.right,val,upper)
+    return isValidBST(root.left,lower,val) && isValidBST(root.right,val,upper)
 };
