@@ -6,6 +6,7 @@ class Node {
     }
 }
 
+// 对称二叉树
 class Tree {
     constructor (data) {
         let nodeList = [];
@@ -34,3 +35,6 @@ class Tree {
         return root
     }
 }
+
+let tree = new Tree([[1,2,2,3,4,4,3]]);
+// 此时tree就是一个对称二叉树
