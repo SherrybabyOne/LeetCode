@@ -8,9 +8,7 @@ var spiralOrder = function(matrix) {
         if(len === 0) return [];
         let n = arr[0].length;
         if(n === 0) return r
-        if(n === 1) {
-            return r.concat(arr.map(item => item[0]))
-        }
+        if(n === 1) return r.concat(arr.map(item => item[0]))
         for(let i = 0; i<len; i++) {
             if(i === 0) {
                 r = r.concat(arr[i]);
