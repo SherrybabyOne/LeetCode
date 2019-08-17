@@ -3,23 +3,18 @@
  * @return {number}
  */
 var lengthOfLongestSubstring = function(s) {
-    if(s.length === 0) return 0;
-    // 输出结果(最大长度)
     let res = 0;
-    // 字符串长度
-    let len = s.length;
-    for(let i = 0; i < len; i++) {
-        let tmpMax = 0;
-        for(let j = 0; j < len; j++) {
-            if(s[j] === s[j+1]) break;
-            tmpMax++
+    let i =0;
+    let tmp = [];
+    while (i < s.length) {
+        if(tmp.indexOf(s[i]) === -1) {
+            tmp.push(s[i])
+        } else {
+            tmp.shift();
+            continue
         }
-        console.log(tmpMax)
-        if(tmpMax > res) res = tmpMax
+        res = Math.max(res,tmp.length);
+        i++
     }
     return res;
 };
-
-console.log(
-    lengthOfLongestSubstring('abcabcbb')
-)
