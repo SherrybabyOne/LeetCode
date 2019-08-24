@@ -1,3 +1,3 @@
 console.log(
-    Math.floor(9/10)
+    'ba' < 'ab'
 )
