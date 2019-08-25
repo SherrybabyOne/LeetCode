@@ -24,3 +24,27 @@ var isValid = function(s) {
     if(stack.length > 0) return false;
     return true;
 };
+
+
+// 优化版
+
+/**
+ * @param {string} s
+ * @return {boolean}
+ */
+var isValid = function(s) {
+    let map = {
+        '(' : ')',
+        '{' : '}',
+        '[' : ']'
+    }
+    let leftArr = [];
+    for(var ch of s) {
+        if(ch in map) {
+            leftArr.push(ch)
+        } else {
+            if(ch != map[leftArr.pop()]) return false;
+        }
+    }
+    return !leftArr.length
+};
