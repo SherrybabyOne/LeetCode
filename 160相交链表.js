@@ -31,22 +31,19 @@ var getIntersectionNode = function(headA, headB) {
 
 
 // 双指针的方法
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val) {
+ *     this.val = val;
+ *     this.next = null;
+ * }
+ */
 var getIntersectionNode = function(headA, headB) {
-    let lastHeadA = headA;
-    let lastHeadB = headB;
-    while (!headA && !headB) {
-        if (headA === null) {
-            headA = lastHeadB;
-        } else {
-            headA = headA.next;
-        }
-        if (headB === null) {
-            headB = lastHeadA;
-        } else {
-            headB = headB.next;
-        }
-        if (headA === headB) {
-            return headA;
-        }
+    let l1 = headA;
+    let l2 = headB;
+    while (l1 !== l2) {
+        l1 = (l1==null) ? headB : l1.next;
+        l2 = (l2==null) ? headA : l2.next;
     }
+    return l1
 };
