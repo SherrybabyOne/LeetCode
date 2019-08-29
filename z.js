@@ -1,8 +1,9 @@
-function a () {
-    a = {a:'a'}
-    b = a;
-    console.log(b.a);
-    a.a = 'b';
-    console.log(b.a)
+function ListNode(val) {
+    this.val = val;
+    this.next = null;
 }
-a()
+
+l = new ListNode();
+console.log (
+    l.val
+)
