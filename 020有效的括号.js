@@ -13,7 +13,6 @@ var isValid = function(s) {
     };
     let stack = [];
     for(let i = 0; i < s.length; i++) {
-        console.log(map[s[i]])
         if(map[s[i]] < 0) {
             stack.push(s[i])
         } else {
