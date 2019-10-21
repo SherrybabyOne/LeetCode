@@ -1,4 +1,4 @@
-let a = [ ['a', 'b'] ];
-const [p, q] = a.shift();
-
-console.log(p, q)
+let a = 5;
+console.log(
+  Math.round(a / 2)
+)
