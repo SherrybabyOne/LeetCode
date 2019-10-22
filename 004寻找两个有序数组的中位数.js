@@ -10,6 +10,7 @@ var findMedianSortedArrays = function(nums1, nums2) {
     [nums1, nums2] = [nums2, nums1];
     [m, n] = [n, m];
   }
+  
   let iMin = 0;
   let iMax = m;
   let halfLen = Math.floor((m + n + 1) / 2);
