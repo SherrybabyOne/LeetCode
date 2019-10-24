@@ -1,45 +1,31 @@
-// 从头到尾打印链表
-class ListNode {
-  constructor(val) {
-    this.val = val;
-    this.next = null;
+// 替换空格
+// 在JavaScript中，使用括号访问字符串不可以对其进行删除或添加
+let replaceBlank = (str) => {
+  let len = str.length;
+  for(let i = 0; i < str.length; i++) {
+    if(str[i] === ' ') len += 2;
   }
-}
-function list(arr) {
-  const head = new ListNode(arr[0]);
-  let pre = head;
-  for(let i = 1; i < arr.length; i++) {
-    pre.next = new ListNode(arr[i]);
-    pre = pre.next;
-  }
-  return head;
-}
-const textList = list([1,2,3,4,6,5])
-
-
-// 方法一: 使用数组 O(n) O(1)
-const printListReversingly1 = (head) => {
-  if(!head) return;
-  const res = [];
-  while(head != null) {
-    res.push(head.val);
-    head = head.next;
-  }
-  return res.reverse()
-}
-console.log(
-  printListReversingly1(textList)
-)
-// 方法二: 使用递归
-const printListReversingly2 = (head, arr = []) => {
-  if(head != null) {
-    if(head.next != null) {
-      printListReversingly2(head.next, arr);
+  let p1 = str.length - 1;
+  let p2 = len - 1;
+  while(p1 >= 0 && p2 > p1) {
+    if(str[p1] === ' ') {
+      str[p2--] = '0';
+      str[p2--] = '2';
+      str[p2--] = '%';
+    } else {
+      str[p2--] = str[p1];
     }
-    arr.push(head.val);
+    p1--;
   }
-  return arr;
+  return str;
 }
+
 console.log(
-  printListReversingly2(textList)
+  replaceBlank('We are happy.')
 )
+
+// 使用API:
+const replaceBlank2 = (str) => {
+  return str.replace(/ /g, '20%')
+}
+console.log(replaceBlank2('We are happy.'))
