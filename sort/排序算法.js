@@ -36,6 +36,7 @@ console.log(selectSort1([2,6,1,8,5]))
 console.log(selectSort2([2,6,1,8,5]))
 
 // 快速排序
+// 时间复杂度; O(n*log(n))
 function quickSort(arr) {
   quick(arr, 0, arr.length - 1);
   return arr;
