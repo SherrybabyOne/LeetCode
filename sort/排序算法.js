@@ -1,13 +1,18 @@
 // 冒泡排序
 // 时间复杂度: O(n^2)
 const bubbleSort = arr => {
-  for(let i = arr.length - 1; i > 0; i--) {
+  for(let i = arr.length - 2; i > 0; i--) {
     for(let j = 0; j < i; j ++) {
       if(arr[j] > arr[j + 1]) [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
     }
   }
   return arr;
 }
+console.log(bubbleSort([2,6,1,8,5]))
+
+
+
+
 // 选择排序
 // 时间复杂度: O(n^2)
 const selectSort1 = arr => {
@@ -30,10 +35,13 @@ const selectSort2 = arr => {
   }
   return arr;
 }
-
-console.log(bubbleSort([2,6,1,8,5]))
 console.log(selectSort1([2,6,1,8,5]))
 console.log(selectSort2([2,6,1,8,5]))
+
+
+
+
+
 
 // 快速排序
 // 时间复杂度; O(n*log(n))
