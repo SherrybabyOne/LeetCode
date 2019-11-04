@@ -25,6 +25,7 @@ console.log(
 )
 
 // 方法二: 贪婪算法
+// 时间复杂度： O(1) 空间复杂度: O(1)
 const maxProductAfter2 = (length) => {
   if(length < 2) return 0;
   if(length === 2) return 1;
