@@ -1,4 +1,6 @@
-let a = 5;
-console.log(
-  Math.round(a / 2)
-)
+let a = {
+  a: 'a'
+};
+b = a;
+a = null;
+console.log(b)
