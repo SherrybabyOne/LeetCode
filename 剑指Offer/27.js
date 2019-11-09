@@ -1,5 +1,5 @@
 // 面试题27: 二叉树的镜像
-// LeetCode原题102对称二叉树
+
 const isSymmetric = (root) => {
   if(!root) return;
   if(!root.left && !root.right) return;
