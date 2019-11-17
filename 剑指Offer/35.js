@@ -1,5 +1,8 @@
-// 面试题35: 复杂链表的赋值
+// 面试题35: 复杂链表的复制
+// LeetCode原题138
 
+
+// 方法一: 哈希表法 空间复杂度: O(n), 空间复杂度: O(n)
 /**
  * // Definition for a Node.
  * function Node(val,next,random) {
