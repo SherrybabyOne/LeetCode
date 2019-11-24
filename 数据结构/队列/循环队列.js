@@ -8,7 +8,9 @@ class SqQueue {
         // 当前队列大小
         this.size = 0;
     }
-    enQueue () {
+    enQueue (item) {
+        // 判断队尾+1是否为队头
+        // 如果是就代表需要扩容数组
         if (this.first === (this.last + 1) % this.queue.length) {
             this.resize(this.getLength() * 2 + 1);
         }

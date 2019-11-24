@@ -1,6 +1,3 @@
-const a = [1,2,3]
-function add(arr) {
-  arr.push(19)
-}
-add(a)
+const a = '1234'
+a[2] = 1
 console.log(a)
