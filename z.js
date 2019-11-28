@@ -1,3 +1,4 @@
-const a = '1234'
-a[2] = 1
-console.log(a)
+console.log(
+  -1 >>> 32,
+  -1 >>> 1
+)

@@ -1,5 +1,5 @@
 class Node {
-    constructor (value) {
+    constructor (val) {
         this.val = val;
         this.left = null;
         this.right = null;
@@ -7,28 +7,25 @@ class Node {
 }
 
 class BST {
-    constructor () {
+    constructor() {
         this.root = null;
         this.size = 0;
     }
-    getSize () {
+    getSize() {
         return this.size;
     }
-    isEmpty () {
+    isEmpty() {
         return this.size === 0;
     }
-    addNode (val) {
+    addNode(val) {
         this.root = this._addChilc(this.root,val)
     }
-    _addChilc (node,val) {
-        if (!node) {
-            this.size++;
-            return new Node(val)
-        }
-        if (node.val > val) {
-            node.left = this._addChilc(node.left,val);
-        } else if (node.val < val) {
-            node.right = this._addChilc(node.right,val);
+    _addChild(node, val) {
+        if(!node) return new Node(val)
+        if(node.val > val) {
+            node.left = this._addChild(node.left, val)
+        }else if(node.val < val) {
+            node.right = this._addChild(node.right, val)
         }
         return node
     }
@@ -104,10 +101,10 @@ class Bst {
 
 
 // 删除任意节点
-delect(v) {
+function delect(v) {
     this.root = this._delect(this.root, v)
   }
-  _delect(node, v) {
+  function _delect(node, v) {
     if (!node) return null
     // 寻找的节点比当前节点小，去左子树找
     if (node.value < v) {
