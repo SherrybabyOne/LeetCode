@@ -1,28 +1,19 @@
 class Stack {
-    constructor () {
-        this.stack = [];
+    constructor(...items) {
+        this.reverse = false;
+        this.stack = [...items];
     }
-    push (item) {
-        return this.stack.push(item);
+
+    push(...items) {
+        return this.reverse ? this.stack.unshift(...items) : this.stack.push(...items);
     }
-    pop () {
-        return this.stack.pop();
-    }
-    getCount () {
-        return this.stack.length;
-    }
-    peek () {
-        return this.stack[this.getCount() - 1];
-    }
-    isEmpty () {
-        return this.stack.length === 0;
+
+    pop() {
+        return this.reverse ? this.stack.shift() : this.stack.pop();
     }
 }
 
-const stack = new Stack()
-console.log(
-    stack,
-    stack.push('a'),
-    stack.push('b'),
-    stack
-)
+const stack = new Stack(4, 5);
+stack.push(1, 2);
+stack.pop();
+console.log(stack);
