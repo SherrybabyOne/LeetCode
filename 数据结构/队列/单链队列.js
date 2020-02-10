@@ -1,22 +1,21 @@
+// 先进先出的数据结构
+// 浏览器/NodeJs中关于宏任务和微任务
 class Queue {
-    constructor () {
-        this.queue = [];
+    constructor(...items) {
+        this.reverse = false;
+        this.queue = [...items];
     }
-    enQueue (item) {
-        this.queue.push(item);
+
+    enqueue(...items) {
+        this.reverse ? this.queue.push(...items) : this.queue.unshift(...items);
     }
-    deQueue () {
-        return this.queue.shift();
-    }
-    getHeader () {
-        return this.queue[0];
-    }
-    getLength () {
-        return this.queue.length;
-    }
-    isEmpty () {
-        return this.queue.length === 0;
+
+    dequeue() {
+        this.reverse ? this.queue.shift() : this.queue.pop();
     }
 }
 
-// 单链队列的出队操作需要O(n)的时间复杂度
+const queue = new Queue(1, 2);
+queue.enqueue(3, 4);
+queue.dequeue();
+console.log(queue);

@@ -1,3 +1,4 @@
+// 先进后出，后进先出
 class Stack {
     constructor(...items) {
         this.reverse = false;
