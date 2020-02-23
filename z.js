@@ -1,4 +1,3 @@
-console.log(
-  -1 >>> 32,
-  -1 >>> 1
-)
+const a = [];
+a.pop();
+console.log(a[-1]);
