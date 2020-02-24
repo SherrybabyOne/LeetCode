@@ -10,7 +10,7 @@ class Stack {
         return this.isEmpty() ? undefined : this.stack.pop();
     }
     peek() {
-        return this.stack[this.iterms.length];
+        return this.stack[this.stack.length - 1];
     }
     isEmpty() {
         return this.stack.length === 0;
