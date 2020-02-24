@@ -7,7 +7,7 @@ class Stack {
         this.stack.push(...iterms);
     }
     pop() {
-        return this.stack.pop();
+        return this.isEmpty() ? undefined : this.stack.pop();
     }
     peek() {
         return this.stack[this.iterms.length];
@@ -32,7 +32,6 @@ function decimalToBinary(decNumber) {
         remStack.push(number % 2);
         number = Math.floor(number / 2);
     }
-    console.log(remStack)
     while (!remStack.isEmpty()) {
         res += remStack.pop().toString();
     }
