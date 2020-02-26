@@ -17,19 +17,51 @@ class LinkList {
 
   push(element) {
     const node = new Node(element);
-    let current;
     if (this.head === undefined) {
       this.head = node;
     } else {
-      current = head;
-      while (current.next !== undefined) {
+      let current = this.head;
+      while (current.next != undefined) {
         current = current.next;
       }
       current.next = node;
     }
     this.count++;
   }
+  remove(index) {
+    if (index >= 0 && index < this.count) {
+      let current = this.head;
+      if (index === 0) {
+        this.head = current.next;
+      } else {
+        let previous;
+        for (let i = 0; i < index; i++) {
+          previous = current;
+          current = current.next;
+        }
+        previous.next = current.next;
+      }
+      this.count--;
+      return current.element;
+    }
+    return undefined;
+  }
+  getElementAt(index) {
+    if (index >= 0 && index < this.count) {
+      let current = this.head;
+      for(let i = 0; i < index && current != null; i++) {
+        current = current.next;
+      }
+      return current;
+    }
+    return undefined;
+  }
 }
+
+const list = new LinkList();
+list.push('a');
+list.push('b');
+console.log(list);
 // class LinkList {
 //   constructor() {
 //     // 链表长度
