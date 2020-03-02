@@ -5,14 +5,10 @@ class Node {
   }
 }
 
-function equalsFn(a, b) {
-  return a === b;
-}
 class LinkList {
   constructor() {
     this.count = 0;
     this.head = undefined;
-    this.equalsFn = equalsFn;
   }
 
   // 获取第index个元素（从0开始）
