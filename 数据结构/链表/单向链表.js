@@ -109,3 +109,5 @@ class LinkList {
     return objString;
   }
 }
+
+module.exports =  { Node, LinkList };
