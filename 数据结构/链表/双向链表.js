@@ -70,3 +70,11 @@ class DoubleLinkList extends LinkList {
     return undefined;
   }
 }
+
+const test = new DoubleLinkList();
+test.insert('eee', 0)
+test.insert('aaa', 1)
+test.insert('bbb', 2);
+test.removeAt(1);
+console.log(test.count)
+console.log(test)
