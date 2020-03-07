@@ -1,3 +1,1 @@
-const a = [];
-a.pop();
-console.log(a[-1]);
+console.log((-1 + 3) % 3)
