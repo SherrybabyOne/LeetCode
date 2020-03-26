@@ -18,7 +18,7 @@ class BST {
         return this.size === 0;
     }
     addNode(val) {
-        this.root = this._addChilc(this.root,val)
+        this.root = this._addChilc(this.root, val)
     }
     _addChild(node, val) {
         if(!node) return new Node(val)
@@ -27,6 +27,7 @@ class BST {
         }else if(node.val < val) {
             node.right = this._addChild(node.right, val)
         }
+        this.size ++;
         return node
     }
 }
@@ -37,6 +38,7 @@ class BST {
 class BST {
     // 获取最小值
     getMin () {
+        if (!this.root) return null;
         return this._getMin(this.root).val;
     }
     _getMin (node) {
@@ -45,6 +47,7 @@ class BST {
     }
     // 获取最大值
     getMax () {
+        if (!this.root) return null;
         return this._getMax(this.root).val;
     }
     _getMax (node) {
