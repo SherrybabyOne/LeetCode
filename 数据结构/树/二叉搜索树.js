@@ -18,120 +18,108 @@ class BST {
         return this.size === 0;
     }
     addNode(val) {
-        this.root = this._addChilc(this.root, val)
+        this.root = this._addChild(this.root, val);
     }
     _addChild(node, val) {
-        if(!node) return new Node(val)
-        if(node.val > val) {
-            node.left = this._addChild(node.left, val)
-        }else if(node.val < val) {
-            node.right = this._addChild(node.right, val)
+        if(!node) {
+            this.size++;
+            return new Node(val);
         }
-        this.size ++;
+        if(node.val > val) {
+            node.left = this._addChild(node.left, val);
+        }else if(node.val < val) {
+            node.right = this._addChild(node.right, val);
+        }
         return node
     }
 }
 
-
-
-// 二分搜索树查找最大值/最小值
-class BST {
-    // 获取最小值
-    getMin () {
-        if (!this.root) return null;
-        return this._getMin(this.root).val;
-    }
-    _getMin (node) {
-        if (!node.left) return node;
-        return this._getMin(noode.left);
-    }
-    // 获取最大值
-    getMax () {
-        if (!this.root) return null;
-        return this._getMax(this.root).val;
-    }
-    _getMax (node) {
-        if (!node.right) return node;
-        return this._getMax(node.right);
-    }
+// 搜索最小值
+BST.prototype.getMin = function () {
+    if (!this.root) return null;
+    return this.getMinNode(this.root).val;
+}
+BST.prototype.getMinNode = function (node) {
+    if (!node.left) return node;
+    return this.getMinNode(node.left);
 }
 
-
-// 向上取整和向下取整
-class BST {
-    floor (v) {
-        let node = this._floor(this.root, v)
-        return node ? node.val : null
-    }
-    _floor (node, v) {
-        if (!node) return null
-        if (node.val === v) return v
-        if (node.val > v) return this._floor(node.left, v)
-        // 判断当前节点是否拥有右子树
-        let right = this._floor(node.right, v);
-        if (right) return right
-        return node
-    }
+// 搜索最大值
+BST.prototype.getMax = function () {
+    if (!this.root) return null;
+    return this.getMaxNode(this.root).val;
+}
+BST.prototype.getMaxNode = function (node) {
+    if (!node.right) return node;
+    return this.getMaxNode(node.right);
 }
 
-
+// 搜索某个特定的值
+BST.prototype.search = function (val) {
+    if (!this.root) return false;
+    return this.searchNode(this.root, val);
+}
+BST.prototype.searchNode = function (node, val) {
+    if (!node) return false;
+    if (val < node.val) return this.searchNode(node.left, val);
+    if (val > node.val) return this.searchNode(node.right, val);
+    return true;
+}
 
 // 二叉搜索树中最难实现的部分：删除节点
 // 有三种情况：
 // 1. 需要删除的节点没有子树
 // 2. 需要删除的节点只有一条子树
 // 3. 需要删除的节点有左右两条子树
-
-
-// 删除最小节点：
-class Bst {
-    deleteMin () {
-        this.root = this._deleteMin(this.root);
-        console.log(this.root);
-    }
-    _deleteMin (node) {
-        // 一直递归左子树
-        // 如果左子树为空，就判断节点是否拥有右子树
-        // 有右子树的话就把需要删除的节点替换为右子树
-        if (!node.left && node !== null) {
-            return node.right
-        }
-        node.left = this._deleteMin(node.left);
-        return node
-    }
+BST.prototype.remove = function (val) {
+    if (!this.root) return null;
+    this.root = this.removeNode(this.root, val);
 }
-
-
-
-// 删除任意节点
-function delect(v) {
-    this.root = this._delect(this.root, v)
-  }
-  function _delect(node, v) {
-    if (!node) return null
-    // 寻找的节点比当前节点小，去左子树找
-    if (node.value < v) {
-      node.right = this._delect(node.right, v)
-    } else if (node.value > v) {
-      // 寻找的节点比当前节点大，去右子树找
-      node.left = this._delect(node.left, v)
+BST.prototype.removeNode = function (node, val) {
+    if (!node) return null;
+    if (val < node.val) {
+        node.left = this.removeNode(node.left, val);
+        return node;
+    } else if (val > node.val) {
+        node.right = this.removeNode(node.right, val);
+        return node;
     } else {
-      // 进入这个条件说明已经找到节点
-      // 先判断节点是否拥有拥有左右子树中的一个
-      // 是的话，将子树返回出去，这里和 `_delectMin` 的操作一样
-      if (!node.left) return node.right
-      if (!node.right) return node.left
-      // 进入这里，代表节点拥有左右子树
-      // 先取出当前节点的后继结点，也就是取当前节点右子树的最小值
-      let min = this._getMin(node.right)
-      // 取出最小值后，删除最小值
-      // 然后把删除节点后的子树赋值给最小值节点
-      min.right = this._delectMin(node.right)
-      // 左子树不动
-      min.left = node.left
-      node = min
+        // 键相同的情况
+        // 第一种情况：移除一个叶节点
+        if (node.left == null && node.right == null) {
+            this.size--;
+            node = null;
+            return node;
+        }
+        // 第二种情况：移除有一个左侧或右侧子节点的节点
+        if (node.left == null) {
+            this.size--;
+            node = node.right;
+            return node;
+        } else if (node.right == null) {
+            this.size--;
+            node = node.left;
+            return node;
+        }
+        // 第三种情况：移除有两个子节点的节点
+        const aux = this.getMinNode(node.right);
+        node.val = aux.val;
+        node.right = this.removeNode(node.right, aux.val);
+        return node;
     }
-    // 维护 size
-    node.size = this._getSize(node.left) + this._getSize(node.right) + 1
-    return node
 }
+
+const tree = new BST();
+tree.addNode(3);
+tree.addNode(1);
+tree.addNode(4);
+tree.addNode(5);
+tree.addNode(7);
+tree.addNode(6);
+tree.addNode(8);
+tree.addNode(2);
+tree.addNode(-1);
+console.log(
+    tree.remove(1),
+    tree.getSize(),
+)
