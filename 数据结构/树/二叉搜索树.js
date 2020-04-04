@@ -123,3 +123,5 @@ console.log(
     tree.remove(1),
     tree.getSize(),
 )
+
+export default BST;
