@@ -1,4 +1,7 @@
 // 最小堆
+function swap(array, a, b) {
+  [array[a], array[b]] = [array[b], array[a]];
+}
 class MinHeap {
   constructor() {
     this.heap = [];
@@ -46,14 +49,44 @@ class MinHeap {
   }
 }
 
-function swap(array, a, b) {
-  [array[a], array[b]] = [array[b], array[a]];
+// 导出最小值
+MinHeap.prototype.extract = function() {
+  if(this.isEmpty()) return undefined;
+  if(this.size() === 1) return this.heap.shift();
+  const removedValue = this.heap.shift();
+  this.heap.unshift(this.heap.pop());
+  // 下移操作
+  this.shiftDown(0);
+  return removedValue;
 }
+MinHeap.prototype.shiftDown = function(index) {
+  let element = index;
+  const left = this.getLeftIndex(index);
+  const right = this.getRightIndex(index);
+  const size = this.size();
+  if (left < size && this.heap[left] < this.heap[element]) {
+    element = left;
+  }
+  if (right < size && this.heap[right] < this.heap[element]) {
+    element = right;
+  }
+  if (element !== index) {
+    swap(this.heap, element, index);
+    this.shiftDown(element);
+  }
+}
+
+// const heap = new MinHeap();
+// heap.insert(2);
+// heap.insert(3);
+// heap.insert(4);
+// heap.insert(5);
+// heap.insert(1);
+// console.log(heap.findMinimum());
+// console.log(heap.heap);
 const heap = new MinHeap();
-heap.insert(2);
-heap.insert(3);
-heap.insert(4);
-heap.insert(5);
-heap.insert(1);
-console.log(heap.findMinimum());
+for (let i = 1; i < 10; i++) {
+  heap.insert(i);
+}
+heap.extract();
 console.log(heap.heap);
