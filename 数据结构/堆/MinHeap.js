@@ -90,3 +90,5 @@ for (let i = 1; i < 10; i++) {
 }
 heap.extract();
 console.log(heap.heap);
+
+module.exports = MinHeap;
