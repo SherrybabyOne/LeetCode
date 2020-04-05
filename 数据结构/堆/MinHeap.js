@@ -1,10 +1,10 @@
 // 最小堆
 class MinHeap {
-  constructor () {
+  constructor() {
     this.heap = [];
   }
   // 插入一个新的值
-  insert (val) {
+  insert(val) {
     if (val != null) {
       this.heap.push(val);
       // 上移操作
@@ -12,6 +12,15 @@ class MinHeap {
       return true;
     }
     return false;
+  }
+  findMinimum() {
+    return this.heap[0];
+  }
+  size() {
+    return this.heap.length;
+  }
+  isEmpty() {
+    return this.size() === 0;
   }
   // 上移操作
   shiftUp (index) {
@@ -23,21 +32,21 @@ class MinHeap {
     }
   }
   // 左子节点的索引
-  getLeftIndex (index) {
+  getLeftIndex(index) {
     return 2 * index + 1;
   }
   // 右子节点的索引
-  getRightIndex (index) {
+  getRightIndex(index) {
     return 2 * index + 2;
   }
   // 父节点的索引
-  getParentIndex (index) {
+  getParentIndex(index) {
     if (index === 0) return undefined;
     return Math.floor((index - 1) / 2);
   }
 }
 
-function swap (array, a, b) {
+function swap(array, a, b) {
   [array[a], array[b]] = [array[b], array[a]];
 }
 const heap = new MinHeap();
@@ -46,4 +55,5 @@ heap.insert(3);
 heap.insert(4);
 heap.insert(5);
 heap.insert(1);
+console.log(heap.findMinimum());
 console.log(heap.heap);
