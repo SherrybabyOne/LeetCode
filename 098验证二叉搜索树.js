@@ -10,9 +10,9 @@
  * @return {boolean}
  */
 var isValidBST = function(root,lower = null,upper = null) {
-    if(!root) return true
-    let val = root.val;
-    if(lower !== null && val <= lower) return false;
-    if(upper !== null && val >= upper) return false;
-    return isValidBST(root.left,lower,val) && isValidBST(root.right,val,upper)
+	if (!root) return true;
+	const val = root.val;
+	if (lower !== null && lower >= val) return false;
+	if (upper !== null && upper <= val) return false;
+	return isValidBST(root.left, lower, val) && isValidBST(root.right, val, upper);
 };
