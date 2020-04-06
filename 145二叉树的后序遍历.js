@@ -9,51 +9,53 @@
  * @param {TreeNode} root
  * @return {number[]}
  */
-
-// 迭代
-var postorderTraversal = function(root) {
-    let res = [];
-    let stack = [];
-    while (root || stack.length) {
-        if (root.left) {
-            stack.push(root);
-            root = root.left
-        } else if (root.right) {
-            stack.push(root);
-            root = root.right;
-        } else {
-            res.push(root.val);
-            root = stack.pop();
-            if (root && root.left) root.left = null;
-            else if (root && root.right) root.right = null;
-        }
-    }
-    return res
+// 利用栈循环操作：
+const postorderTraversal = function(root) {
+	if (!root) return [];
+	const stack = [];
+	const res = [];
+	let last = null;
+	let current = root;
+	while (stack.length > 0 || current) {
+		while (current) {
+			stack.push(current);
+			current = current.left;
+		}
+		current = stack[stack.length - 1];
+		if (!current.right || current.right == last) {
+			current = stack.pop();
+			res.push(current.val);
+			last = current;
+			// 防止左孩子继续进栈
+			current = null;
+		} else {
+			current = current.right;
+		}
+	}
+	return res;
 };
 
-
-
-var postorderTraversal = function(root) {
-    if (root === null) return [];
-    let stack = [];
-    let res = [];
-    stack.push(root);
-    while (stack.length) {
-        let node = stack.pop();
-        if (node === null) continue;
-        res.push(node.val);
-        stack.push(node.left);
-        stack.push(node.right);
-    }
-    return res.reverse();
+//   反向操作，最后反转数组：
+const postorderTraversal = function(root) {
+	if (root === null) return [];
+	let stack = [];
+	let res = [];
+	stack.push(root);
+	while (stack.length > 0) {
+		let node = stack.pop();
+		res.push(node.val);
+		if (node.left) stack.push(node.left);
+		if (node.right) stack.push(node.right);
+	}
+	return res.reverse();
 };
 
 // 递归
 var postorderTraversal = function(root,array = []) {
-    if (root) {
-        postorderTraversal(root.left,array);
-        postorderTraversal(root.right,array);
-        array.push(root.val);
-    }
-    return array;
+	if (root) {
+		postorderTraversal(root.left,array);
+		postorderTraversal(root.right,array);
+		array.push(root.val);
+	}
+	return array;
 };
