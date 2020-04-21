@@ -32,7 +32,6 @@ const inorderTraversal = function(root) {
     current = stack.pop();
     res.push(current.val);
     current = current.right;
-    current = null;
   }
   return res;
 }
