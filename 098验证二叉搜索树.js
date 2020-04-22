@@ -33,7 +33,15 @@ var isValidBST = function(root) {
 };
 // 中序遍历-递归
 var isValidBST = function(root) {
-
+  let prev = null;
+  const help = (node) => {
+    if (!node) return true;
+    if(!help(node.left)) return false;
+    if (prev && prev.val >= node.val) return false;
+    prev = node;
+    return help(node.right);
+  }
+  return help(root);
 };
 // 递归DFS
 var isValidBST = function(root, lowser = null, upper = null) {
