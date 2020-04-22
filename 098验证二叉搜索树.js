@@ -9,6 +9,18 @@
  * @param {TreeNode} root
  * @return {boolean}
  */
+// 中序遍历-递归
+var isValidBST = function(root) {
+  let prev = null;
+  const help = (node) => {
+    if (!node) return true;
+    if(!help(node.left)) return false;
+    if (prev && prev.val >= node.val) return false;
+    prev = node;
+    return help(node.right);
+  }
+  return help(root);
+};
 // 中序遍历-非递归
 var isValidBST = function(root) {
   if (!root) return true;
@@ -31,19 +43,8 @@ var isValidBST = function(root) {
     return true;
   })
 };
-// 中序遍历-递归
-var isValidBST = function(root) {
-  let prev = null;
-  const help = (node) => {
-    if (!node) return true;
-    if(!help(node.left)) return false;
-    if (prev && prev.val >= node.val) return false;
-    prev = node;
-    return help(node.right);
-  }
-  return help(root);
-};
-// 递归DFS
+
+// 递归-DFS
 var isValidBST = function(root, lowser = null, upper = null) {
   if (!root) return true;
   if (lowser !== null && lowser >= root.val) return false;
@@ -52,5 +53,23 @@ var isValidBST = function(root, lowser = null, upper = null) {
 };
 // 非递归-DFS
 var isValidBST = function(root) {
-
+  if (!root) return true;
+  const stack = [root];
+  root.min = Number.MIN_SAFE_INTEGER;
+  root.max = Number.MAX_SAFE_INTEGER;
+  while (stack.length) {
+    const node = stack.pop();
+    if (node.val >= node.max || node.val <= node.min) return false;
+    if (node.right) {
+      stack.push(node.right);
+      node.right.min = node.val;
+      node.right.max = node.max;
+    }
+    if (node.left) {
+      stack.push(node.left);
+      node.left.min = node.min;
+      node.left.max = node.val;
+    }
+  }
+  return true;
 };
