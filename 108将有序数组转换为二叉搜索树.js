@@ -10,12 +10,11 @@
  * @return {TreeNode}
  */
 var sortedArrayToBST = function(nums) {
-  if(!nums.length) return null;
-  if(nums.length === 0) return new TreeNode(null);
-  if(nums.length === 1) return new TreeNode(nums[0]);
-  let middle = Math.round(nums.length / 2);
-  let root = new TreeNode(nums[middle - 1]);
-  root.left = sortedArrayToBST(nums.splice(0, middle - 1));
-  root.right = sortedArrayToBST(nums.splice(1));
+  if (nums.length === 0) return null;
+  if (nums.length === 1) return new TreeNode(nums[0]);
+  const middle = Math.floor(nums.length / 2);
+  const root = new TreeNode(nums[middle]);
+  root.left = sortedArrayToBST(nums.slice(0, middle));
+  root.right = sortedArrayToBST(nums.slice(middle + 1));
   return root;
 };
