@@ -1,3 +1,5 @@
+// BST：搜索二叉树
+// 只允许在左侧节点存储（比父节点）小的值，在右侧节点存储（比父节点）大的值
 class Node {
 	constructor (val) {
 		this.val = val;
