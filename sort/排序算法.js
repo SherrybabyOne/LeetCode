@@ -1,28 +1,5 @@
-function checkArray(arr) {
-  if(!arr || arr.length < 2) return;
-}
-function swap(array, left, right) {
-  const rightVal = array[right];
-  array[right] = array[left];
-  array[left] = rightVal;
-}
-// 一、冒泡排序
-// 时间复杂度: O(n^2)
-const bubbleSort = arr => {
-  checkArray(arr);
-  for(let i = arr.length - 1; i > 0; i--) {
-    for(let j = 0; j < i; j ++) {
-      if(arr[j] > arr[j + 1]) swap(arr, j, j + 1);
-    }
-  }
-  return arr;
-}
-console.log(bubbleSort([2,6,1,8,5]))
-
-
-
-
-// 二、选择排序
+// 选择排序：原址比较排序算法。大致思路是找到数据结构中的最小值并将其放在第一位，
+// 接着找到第二小值并将其放在第二位，以此类推。
 // 时间复杂度: O(n^2)
 const selectSort = arr => {
   for(let i = 0; i < arr.length - 1; i++) {
@@ -35,6 +12,9 @@ const selectSort = arr => {
   return arr;
 }
 console.log(selectSort([2,6,1,8,5]))
+const selectionSort = arr => {
+  const length = 
+}
 
 
 // 三、插入排序
