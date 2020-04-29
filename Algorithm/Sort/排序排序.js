@@ -1,18 +1,3 @@
-// 三、插入排序
-// 时间复杂读: O(n * n)
-const insertSort = (arr) => {
-  checkArray(arr);
-  for(let i = 1; i < arr.length; i++) {
-    for(let j = i - 1; j >= 0 && arr[j] > arr[j + 1]; j--) {
-      swap(arr, j, j + 1)
-    }
-  }
-  return arr;
-}
-console.log(
-  insertSort([2,6,1,8,5])
-)
-
 // 四、归并排序
 function mergeSort(arr) {
   if(arr.length < 2) return arr;
