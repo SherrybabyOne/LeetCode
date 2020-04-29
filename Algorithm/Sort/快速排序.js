@@ -1,33 +1,3 @@
-// 四、归并排序
-function mergeSort(arr) {
-  if(arr.length < 2) return arr;
-  const middle = Math.floor(arr.length / 2);
-  // 拆分成两个数组
-  const left = arr.slice(0, middle);
-  const right = arr.slice(middle);
-  return merge(mergeSort(left), mergeSort(right));
-}
-function merge(left, right) {
-  const res = [];
-  while(left.length && right.length) {
-    if(left[0] <= right[0]) {
-      res.push(left.shift())
-    }else {
-      res.push(right.shift())
-    }
-  }
-  while(left.length) res.push(left.shift());
-  while(right.length) res.push(right.shift());
-
-  return res;
-}
-console.log(
-  mergeSort([2,6,1,8,5])
-)
-
-
-
-
 // 五、快速排序
 // 时间复杂度; O(n*log(n))
 function quickSort(arr) {
