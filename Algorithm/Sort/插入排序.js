@@ -1,4 +1,5 @@
 // 插入排序
+// 时间复杂度：O(n * n)
 // 排序小型数组时，比选择排序和冒泡排序性能要好
 const insertionSort = arr => {
   const len = arr.length;
