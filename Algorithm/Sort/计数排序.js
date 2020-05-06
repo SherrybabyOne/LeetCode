@@ -1,6 +1,6 @@
 // 计数排序
 // 分布式排序，是一个正整数排序算法
-// 时间复杂度：O(n + k)
+// 时间复杂度：O(n)
 // 需要更多的内存来存放临时数组
 const countingSort = arr => {
   if (arr.length < 2) return arr;
