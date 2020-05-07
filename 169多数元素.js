@@ -3,6 +3,8 @@
  * @return {number}
  */
 // 哈希表写法
+// 时间复杂度：O(n)
+// 空间复杂度：O(n)
 var majorityElement = function(nums) {
   const map = new Map();
   const min = Math.floor(nums.length / 2);
@@ -19,6 +21,8 @@ var majorityElement = function(nums) {
 };
 
 // 分治写法
+// 时间复杂度：O(nlogn)
+// 空间复杂度：O(logn)
 var majorityElement = function(nums) {
   return majorityElementRec(nums, 0, nums.length - 1);
 };
@@ -39,3 +43,24 @@ var countInRange = function(nums, num, lo, hi) {
   }
   return count;
 }
+
+// 巧妙的解题思路
+// 时间复杂度：O(n)
+// 空间复杂度：O(1)
+var majorityElement = function(nums) {
+  let curNum = nums[0];
+  let count = 1;
+  for (let i = 1; i < nums.length; i++) {
+    if (count === 0) {
+      curNum = nums[i];
+      count = 1;
+    } else {
+      if (curNum === nums[i]) {
+        count++;
+      } else {
+        count--;
+      }
+    }
+  }
+  return curNum;
+};
