@@ -1,7 +1,11 @@
-const a = {
-  a: 'a',
-  b: 'b',
-  c: 'c',
-};
+const cache = [1, 3,];
 
-console.log(Object.values(a))
+function a() {
+  return (cache[2] = 5);
+}
+let aaa;
+
+console.log(
+  a(),
+  aaa = 'aaaaaa',
+)
