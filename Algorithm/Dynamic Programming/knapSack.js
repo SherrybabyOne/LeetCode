@@ -1,7 +1,6 @@
 // knapSack
 // 最少硬币找零问题
 const kanpSack = (coins, amount) => {
-  // 记忆化
   const cache = [];
   const makeChange = value => {
     if (!value) return [];
@@ -11,12 +10,13 @@ const kanpSack = (coins, amount) => {
     let newAmount;
     for (let i = 0; i < coins.length; i++) {
       const coin = coins[i];
-      newAmount = value - coins[i];
+      newAmount = value - coin;
       if (newAmount >= 0) {
         newMin = makeChange(newAmount);
       }
-      if (newAmount >= 0 &&
-        (newMin.length < min.length - 1 || !min.length) &&
+      if (
+        newAmount >= 0 &&
+        (newMin.length + 1 < min.length || !min.length) &&
         (newMin.length || !newAmount)
       ) {
         min = [coin].concat(newMin);
@@ -29,5 +29,5 @@ const kanpSack = (coins, amount) => {
 }
 
 console.log(
-  kanpSack([1, 5, 10, 25], 36)
+  kanpSack([1, 5, 10, 25], 36),
 )
