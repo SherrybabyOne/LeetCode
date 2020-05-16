@@ -1,6 +1,6 @@
 // knapSack
 // 最少硬币找零问题
-const kanpSack = (coins, amount) => {
+const miniCoinChange = (coins, amount) => {
   const cache = [];
   const makeChange = value => {
     if (!value) return [];
