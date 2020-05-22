@@ -8,13 +8,6 @@
 /**
  * @param {TreeNode} root
  */
-// const inorderTraversal = (node, arr) => {
-//   if (node) {
-//     inorderTraversal(node.left, arr);
-//     arr.push(node.val);
-//     inorderTraversal(node.right, arr);
-//   }
-// }
 const inorderTraversal = root => {
   if (!root) return [];
   const stack = [];
