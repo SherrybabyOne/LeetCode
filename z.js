@@ -1,4 +1,4 @@
+const a = 'a b'
 console.log(
-  50 * 5,
-  1750 / 250
+  a.split('')
 )
