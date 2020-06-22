@@ -42,3 +42,30 @@ function partition(arr, start, end) {
   }
   return i;
 }
+
+
+
+// 方法二
+function MoreThanHalfNum_Solution(numbers) {
+  let res;
+  let count = 0;
+  for (let i = 0; i < numbers.length; i++) {
+    if (count === 0) {
+      res = numbers[i];
+      count++;
+    } else {
+      if (res === numbers[i]) {
+        count++;
+      } else {
+        count--;
+      }
+    }
+  }
+  count = 0;
+  for (let i = 0; i < numbers.length; i++) {
+    if (res === numbers[i]) {
+      count ++;
+    }
+  }
+  return count > numbers.length / 2 ? res : 0;
+}
