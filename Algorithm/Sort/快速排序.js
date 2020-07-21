@@ -26,7 +26,7 @@ function partition(arr, start, end) {
   const pivot = arr[Math.floor((start + end) / 2)];
   let i = start;
   let j = end;
-  while (i < j) {
+  while (i <= j) {
     while (arr[i] < pivot) {
       i++;
     }
@@ -41,5 +41,3 @@ function partition(arr, start, end) {
   }
   return i;
 }
-console.log(quickSort([2, 6, 1, 8, 5]));
-console.log(quickSort([3, 5, 1, 6, 4, 7, 2]));
