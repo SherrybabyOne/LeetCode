@@ -24,39 +24,22 @@ var detectCycle = function(head) {
 };
 // 方法二:
 var detectCycle = function(head) {
-    const meetingNode = findMeetingNode(head);
-    if(!meetingNode) return null;
-    let nodesloop = 1;
-    let pNext = meetingNode;
-    while(pNext.next != meetingNode) {
-        nodesloop++;
-        pNext = pNext.next;
+    if (!head) return null;
+    let intersect = getIntersect(head);
+    if (!intersect) return null;
+    while (head !== intersect) {
+        head = head.next;
+        intersect = intersect.next;
     }
-    let pNode1 = head;
-    let pNode2 = head;
-    for(let i = 0; i < nodesloop; i++) {
-        pNode1 = pNode1.next;
-    }
-    while(pNode1 !== pNode2) {
-        pNode1 = pNode1.next;
-        pNode2 = pNode2.next;
-    }
-    return pNode1;
+    return intersect;
 }
-function findMeetingNode(head) {
-    if(!head) return null;
-    let pSlow = head.next;
-    if(!pSlow) return null;
-    let pFast = pSlow.next;
-    while(pSlow && pFast) {
-        if(pSlow == pFast) {
-            return pSlow;
-        }
-        pSlow = pSlow.next;
-        pFast = pFast.next;
-        if(pFast) {
-            pFast = pFast.next;
-        }
+function getIntersect(head) {
+    let slow = head;
+    let fast = head;
+    while (fast && fast.next) {
+        slow = slow.next;
+        fast = fast.next.next;
+        if (slow === fast) return slow;
     }
     return null;
 }
