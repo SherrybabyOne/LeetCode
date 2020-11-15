@@ -5,13 +5,11 @@
  */
 var findKthLargest = function(nums, k) {
 	if (!nums) return null;
-	// if (nums.length === 1 || nums.length === 2) return nums[k - 1];
 	const res = quickSelect(nums, 0, nums.length - 1, nums.length - k);
 	return res;
 };
 const quickSelect = (nums, start, end, index) => {
 	const i = partition(nums, start, end);
-	// console.log(nums, i);
 	if (i === index) {
 		return nums[index];
 	} else if (i > index) {
